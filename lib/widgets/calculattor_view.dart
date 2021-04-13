@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/settings.dart';
 
@@ -27,7 +25,7 @@ class CalculatorView extends StatelessWidget {
           _Item(
             text: "1000",
           ),
-          Divider(color: Colors.green),
+          Divider(color: green),
           _Item(
             result: true,
             text: "2000",
