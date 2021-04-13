@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/settings.dart';
 
-final textStyle1 = TextStyle(color: Colors.white, fontSize: 30);
-final textStyle2 = TextStyle(color: Colors.white, fontSize: 20);
+final textStyle1 = TextStyle(color: Colors.white, fontSize: 34);
+final textStyle2 = TextStyle(color: Colors.white, fontSize: 24);
 
 class CalculatorView extends StatelessWidget {
   @override
