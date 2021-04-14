@@ -1,37 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_calculator/calculator_page/calculator_controller.dart';
 import 'package:flutter_calculator/settings.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 final textStyle1 = TextStyle(color: Colors.white, fontSize: 34);
 final textStyle2 = TextStyle(color: Colors.white, fontSize: 24);
 
 class CalculatorView extends StatelessWidget {
+  final controller = Get.find<CalculatorController>();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      width: double.infinity,
-      height: size.height / 2.7,
-      color: black,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Expanded(child: Container()),
-          _Item(
-            text: "1000",
-          ),
-          _Item(
-            text: "x",
-          ),
-          _Item(
-            text: "1000",
-          ),
-          Divider(color: green),
-          _Item(
-            result: true,
-            text: "2000",
-          ),
-          SizedBox(height: 8)
-        ],
+    return Obx(
+      () => Container(
+        width: double.infinity,
+        height: size.height / 2.7,
+        color: black,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Expanded(child: Container()),
+            _Item(
+              text: controller.entryTwo.value,
+            ),
+            _Item(
+              text: controller.operation.value,
+            ),
+            _Item(
+              text: controller.entryOne.value,
+            ),
+            Divider(color: green),
+            _Item(result: true, text: controller.result.value),
+            SizedBox(height: 8)
+          ],
+        ),
       ),
     );
   }

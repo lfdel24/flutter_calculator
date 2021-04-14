@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_calculator/calculator_page/calculator_controller.dart';
 import 'package:flutter_calculator/settings.dart';
+import 'package:get/get.dart';
 
 final textStyle2 = TextStyle(color: Colors.white, fontSize: 24);
 
@@ -54,16 +56,16 @@ class _Row2 extends StatelessWidget {
     return Row(
       children: [
         _RowItem(
-          text: "A/C",
+          text: "7",
         ),
         _RowItem(
-          text: "+/-",
+          text: "8",
         ),
         _RowItem(
-          text: "DEL",
+          text: "9",
         ),
         _RowItem(
-          text: "/",
+          text: "x",
           color: green,
         ),
       ],
@@ -77,16 +79,16 @@ class _Row3 extends StatelessWidget {
     return Row(
       children: [
         _RowItem(
-          text: "A/C",
+          text: "4",
         ),
         _RowItem(
-          text: "+/-",
+          text: "5",
         ),
         _RowItem(
-          text: "DEL",
+          text: "6",
         ),
         _RowItem(
-          text: "/",
+          text: "-",
           color: green,
         ),
       ],
@@ -100,16 +102,16 @@ class _Row4 extends StatelessWidget {
     return Row(
       children: [
         _RowItem(
-          text: "A/C",
+          text: "1",
         ),
         _RowItem(
-          text: "+/-",
+          text: "2",
         ),
         _RowItem(
-          text: "DEL",
+          text: "3",
         ),
         _RowItem(
-          text: "/",
+          text: "+",
           color: green,
         ),
       ],
@@ -123,16 +125,16 @@ class _Row5 extends StatelessWidget {
     return Row(
       children: [
         _RowItem(
-          text: "A/C",
+          text: "0",
         ),
         _RowItem(
-          text: "+/-",
+          text: ".",
         ),
         _RowItem(
-          text: "DEL",
+          text: ".",
         ),
         _RowItem(
-          text: "/",
+          text: "=",
           color: green,
         ),
       ],
@@ -150,16 +152,22 @@ class _RowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.only(top: 8),
-        width: 60,
-        height: 60,
-        decoration: new BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
+      child: InkWell(
+        onTap: () {
+          final controller = Get.find<CalculatorController>();
+          controller.core(value: text);
+        },
+        child: Container(
+          alignment: Alignment.center,
+          margin: EdgeInsets.only(top: 8),
+          width: 60,
+          height: 60,
+          decoration: new BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+          ),
+          child: Text(text, style: textStyle2),
         ),
-        child: Text(text, style: textStyle2),
       ),
     );
   }
