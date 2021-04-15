@@ -24,12 +24,12 @@ class CalculatorView extends StatelessWidget {
             SizedBox(height: 8),
             Expanded(child: Container()),
             _Item(
-              text: controller.secondaryText.value,
-              textStyle: textStyleSecondary,
+              text: controller.primaryText.value,
+              textStyle: textStylePrimary,
             ),
             Divider(color: green),
             _Item(
-              text: controller.primaryText.value,
+              text: controller.secondaryText.value,
               textStyle: textStylePrimary,
             ),
             SizedBox(height: 8)

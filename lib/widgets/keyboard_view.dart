@@ -153,7 +153,7 @@ class _CustomRowItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           final controller = Get.find<CalculatorController>();
-          controller.core(value: text);
+          controller.core(text);
         },
         child: Container(
           alignment: Alignment.center,
@@ -188,7 +188,7 @@ class _RowItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           final controller = Get.find<CalculatorController>();
-          controller.core(value: text);
+          controller.core(text);
         },
         child: Container(
           alignment: Alignment.center,

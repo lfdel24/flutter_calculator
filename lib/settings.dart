@@ -9,7 +9,7 @@ const String A_C = "A/C";
 const String MORE_LESS = "+/-";
 const String DEL = "DEL";
 const String DIVISION = "/";
-const String MULTIPLICATION = "*";
+const String MULTIPLICATION = "x";
 const String SUBTRACTION = "-";
 const String SUM = "+";
 const String SAME = "=";
