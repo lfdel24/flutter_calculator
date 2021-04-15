@@ -4,8 +4,8 @@ import 'package:flutter_calculator/settings.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-final textStyle1 = TextStyle(color: Colors.white, fontSize: 34);
-final textStyle2 = TextStyle(color: Colors.white, fontSize: 24);
+final textStylePrimary = TextStyle(color: Colors.white, fontSize: 40);
+final textStyleSecondary = TextStyle(color: Colors.white, fontSize: 20);
 
 class CalculatorView extends StatelessWidget {
   final controller = Get.find<CalculatorController>();
@@ -21,18 +21,17 @@ class CalculatorView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            SizedBox(height: 8),
             Expanded(child: Container()),
             _Item(
-              text: controller.entryTwo.value,
-            ),
-            _Item(
-              text: controller.operation.value,
-            ),
-            _Item(
-              text: controller.entryOne.value,
+              text: controller.secondaryText.value,
+              textStyle: textStyleSecondary,
             ),
             Divider(color: green),
-            _Item(result: true, text: controller.result.value),
+            _Item(
+              text: controller.primaryText.value,
+              textStyle: textStylePrimary,
+            ),
             SizedBox(height: 8)
           ],
         ),
@@ -42,17 +41,17 @@ class CalculatorView extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  final bool result;
   final String text;
+  final TextStyle textStyle;
 
-  const _Item({Key? key, this.result = false, this.text = ""})
+  const _Item({Key? key, this.text = "", this.textStyle = const TextStyle()})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(right: 12, top: 8),
-      child: Text(text, style: result ? textStyle1 : textStyle2),
+      child: Text(text, style: textStyle),
     );
   }
 }

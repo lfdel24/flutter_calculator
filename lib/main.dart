@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter_calculator/text.dart';
 import 'package:flutter_calculator/calculator_page/calculator_page.dart';
 
 void main() {
+  debugPaintLayerBordersEnabled = true;
   runApp(MyApp());
 }
 

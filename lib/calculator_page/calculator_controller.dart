@@ -8,79 +8,69 @@ import 'package:flutter_calculator/settings.dart';
 //TODO: la fila de otras operaciones deberia estar en otro color menos el signo de division
 
 class CalculatorController extends GetxController {
-  //Observables
-  var entryOne = "".obs;
-  var operation = "".obs;
-  var entryTwo = "".obs;
-  var result = "".obs;
+  var primaryText = "".obs;
+  var secondaryText = "".obs;
 
   void core({String value = ""}) {
-    reset();
+    print("number: ${_isNumber(value)}");
+    print("operation: ${_isOperation(value)}");
+    print("action: ${_isAction(value)}");
     del(del: value);
-    setEntryOne(textNumber: value);
-    setOperation(operation: value);
   }
 
-  void reset() {
-    if (this.result.value.isNotEmpty) {
-      this.entryOne.value = "";
-      this.operation.value = "";
-      this.entryTwo.value = "";
-      this.result.value = "";
-    }
+  bool _isNumber(String value) {
+    return (value.contains(ZERO) ||
+        value.contains(ONE) ||
+        value.contains(TWO) ||
+        value.contains(THREE) ||
+        value.contains(FOUR) ||
+        value.contains(FIVE) ||
+        value.contains(SIX) ||
+        value.contains(SEVEN) ||
+        value.contains(EIGHT) ||
+        value.contains(NINE));
+  }
+
+  bool _isOperation(String value) {
+    return (value.contains(DIVISION) ||
+        value.contains(MULTIPLICATION) ||
+        value.contains(SUBTRACTION) ||
+        value.contains(SUM) ||
+        value.contains(SAME));
+  }
+
+  bool _isAction(String value) {
+    return (value.contains(A_C) ||
+        value.contains(MORE_LESS) ||
+        value.contains(DEL) ||
+        value.contains(POINT));
+  }
+
+  void clear() {
+    this.primaryText.value = "";
+    this.secondaryText.value = "";
   }
 
   void del({String del = ""}) {
     if (del.contains(DEL)) {
-      this.entryOne.value = "";
-      this.operation.value = "";
-      this.entryTwo.value = "";
-      this.result.value = "";
-    }
-  }
-
-  void setEntryOne({String textNumber = ""}) {
-    if (textNumber.contains(A_C) ||
-        textNumber.contains(MORE_LESS) ||
-        textNumber.contains(DEL) ||
-        textNumber.contains(DIVISION) ||
-        textNumber.contains(MULTIPLICATION) ||
-        textNumber.contains(SUBTRACTION) ||
-        textNumber.contains(SUM) ||
-        textNumber.contains(SAME)) {
-      return;
-    }
-    entryOne.value += textNumber;
-  }
-
-  void setOperation({String operation = ""}) {
-    if (operation.contains(DIVISION) ||
-        operation.contains(MULTIPLICATION) ||
-        operation.contains(SUBTRACTION) ||
-        operation.contains(SUM)) {
-      this.operation.value = operation;
-      this.entryTwo.value = this.entryOne.value;
-      this.entryOne.value = "";
-    }
-    if (operation.contains(SAME)) {
-      calculate();
+      clear();
     }
   }
 
   void calculate() {
-    int n1 = int.parse(this.entryTwo.value);
-    int n2 = int.parse(this.entryOne.value);
-    if (this.operation.value.contains(DIVISION)) {
-      this.result.value = "${n1 / n2}";
-    }
-    if (this.operation.value.contains(MULTIPLICATION)) {
-      this.result.value = "${n1 * n2}";
-    }
-    if (this.operation.value.contains(SUBTRACTION)) {
-      this.result.value = "${n1 - n2}";
-    }
-    if (this.operation.value.contains(SUM)) {
-      this.result.value = "${n1 + n2}";
-    }
+    // int n1 = int.parse(this.entryOne.value);
+    // int n2 = int.parse(this.entryTwo.value);
+    // if (this.operation.value.contains(DIVISION)) {
+    //   this.result.value = "${n1 / n2}";
+    // }
+    // if (this.operation.value.contains(MULTIPLICATION)) {
+    //   this.result.value = "${n1 * n2}";
+    // }
+    // if (this.operation.value.contains(SUBTRACTION)) {
+    //   this.result.value = "${n1 - n2}";
+    // }
+    // if (this.operation.value.contains(SUM)) {
+    //   this.result.value = "${n1 + n2}";
+    // }
   }
 }
